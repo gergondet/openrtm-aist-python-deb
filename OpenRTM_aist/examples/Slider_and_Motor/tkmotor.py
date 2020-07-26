@@ -8,8 +8,8 @@ import time
 import math
 
 class TkMotor(Frame):
-	def __init__(self, num, radius, master=None):
-		Frame.__init__(self, master)
+	def __init__(self, num, radius, main=None):
+		Frame.__init__(self, main)
 		self.num = num
 		self.r = radius
 		self.init()

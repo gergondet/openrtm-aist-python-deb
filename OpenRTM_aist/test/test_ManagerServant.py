@@ -166,46 +166,46 @@ class TestManagerServant(unittest.TestCase):
     self.assertNotEqual(self.managerservant.getObjRef(),CORBA.Object._nil)
     return
 
-  def test_is_master(self):
-    self.assertEqual(self.managerservant.is_master(),False)
+  def test_is_main(self):
+    self.assertEqual(self.managerservant.is_main(),False)
     return
 
-  def test_get_master_managers(self):
-    self.assertEqual(len(self.managerservant.get_master_managers()),0)
+  def test_get_main_managers(self):
+    self.assertEqual(len(self.managerservant.get_main_managers()),0)
     return
 
-  def test_master_manager(self):
+  def test_main_manager(self):
     if not self.managerservant.createINSManager():
       poa=OpenRTM_aist.Manager.instance().getORB().resolve_initial_references("omniINSPOA")
       poa.deactivate_object(OpenRTM_aist.Manager.instance().getConfig().getProperty("manager.name"))
       self.assertEqual(self.managerservant.createINSManager(),True)
     else:
       self.assertEqual(self.managerservant.createINSManager(),False)
-    self.assertEqual(len(self.managerservant.get_master_managers()),0)
+    self.assertEqual(len(self.managerservant.get_main_managers()),0)
     host_port = "localhost:2810"
     owner = self.managerservant.findManager(host_port)
-    self.assertEqual(self.managerservant.add_master_manager(owner),RTC.RTC_OK)
-    self.assertEqual(len(self.managerservant.get_master_managers()),1)
-    self.assertEqual(self.managerservant.remove_master_manager(owner),RTC.RTC_OK)
-    self.assertEqual(len(self.managerservant.get_master_managers()),0)
+    self.assertEqual(self.managerservant.add_main_manager(owner),RTC.RTC_OK)
+    self.assertEqual(len(self.managerservant.get_main_managers()),1)
+    self.assertEqual(self.managerservant.remove_main_manager(owner),RTC.RTC_OK)
+    self.assertEqual(len(self.managerservant.get_main_managers()),0)
     
     return
 
 
-  def test_slave_managers(self):
+  def test_subordinate_managers(self):
     if not self.managerservant.createINSManager():
       poa=OpenRTM_aist.Manager.instance().getORB().resolve_initial_references("omniINSPOA")
       poa.deactivate_object(OpenRTM_aist.Manager.instance().getConfig().getProperty("manager.name"))
       self.assertEqual(self.managerservant.createINSManager(),True)
     else:
       self.assertEqual(self.managerservant.createINSManager(),False)
-    self.assertEqual(len(self.managerservant.get_slave_managers()),0)
+    self.assertEqual(len(self.managerservant.get_subordinate_managers()),0)
     host_port = "localhost:2810"
     owner = self.managerservant.findManager(host_port)
-    self.assertEqual(self.managerservant.add_slave_manager(owner),RTC.RTC_OK)
-    self.assertEqual(len(self.managerservant.get_slave_managers()),1)
-    self.assertEqual(self.managerservant.remove_slave_manager(owner),RTC.RTC_OK)
-    self.assertEqual(len(self.managerservant.get_slave_managers()),0)
+    self.assertEqual(self.managerservant.add_subordinate_manager(owner),RTC.RTC_OK)
+    self.assertEqual(len(self.managerservant.get_subordinate_managers()),1)
+    self.assertEqual(self.managerservant.remove_subordinate_manager(owner),RTC.RTC_OK)
+    self.assertEqual(len(self.managerservant.get_subordinate_managers()),0)
     return
 
     

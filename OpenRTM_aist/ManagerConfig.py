@@ -132,7 +132,7 @@ class ManagerConfig :
 
     self._configFile = ""
     self._argprop = OpenRTM_aist.Properties()
-    self._isMaster   = False
+    self._isMain   = False
     if argv:
       self.init(argv)
 
@@ -196,8 +196,8 @@ class ManagerConfig :
         print OpenRTM_aist.Logger.print_exception()
 
     self.setSystemInformation(prop)
-    if self._isMaster:
-      prop.setProperty("manager.is_master","YES")
+    if self._isMain:
+      prop.setProperty("manager.is_main","YES")
 
     # Properties from arguments are marged finally
     prop.mergeProperties(self._argprop)
@@ -282,7 +282,7 @@ class ManagerConfig :
           self._argprop.setProperty("corba.endpoints",arg_)
 
       if opt == "-d":
-        self._isMaster = True
+        self._isMain = True
         pass
 
     return
