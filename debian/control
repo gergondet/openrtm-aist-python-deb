@@ -2,7 +2,7 @@ Source: openrtm-aist-python
 Section: science
 Priority: extra
 Maintainer: Noriaki Ando <n-ando@aist.go.jp>
-Build-Depends: debhelper, python, omniidl, omniorb-idl, omniidl-python, python-omniorb, doxygen
+Build-Depends: debhelper, python2.7, omniidl, omniorb-idl, omniidl-python, python-omniorb, doxygen
 Standards-Version: 3.8.4
 Homepage: http://www.openrtm.org
 
